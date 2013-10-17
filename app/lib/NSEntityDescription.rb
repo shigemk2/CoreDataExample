@@ -4,7 +4,7 @@ class NSEntityDescription
     entity.name = name
     entity.managedObjectClassName = name
 
-    attributes = attributes.each.map do |name, type, default, optional, transient, indexed| 
+    attributes = attributes.each.map do |name, type, default, optional, transient, indexed|
       property = NSAttributeDescription.alloc.init
       property.name name
       property.attributeType = type
