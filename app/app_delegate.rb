@@ -1,11 +1,11 @@
 class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     self.setting_core_data
-    # employee_view_controller = EmployeeViewController.alloc.init
-    # employee_view_controller.managed_object_context = @managed_object_context
-    # @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
-    # @window.rootViewController = UINavigationController.alloc.initWithRootViewController(employee_view_controller)
-    # @window.makeKeyAndVisible
+    employee_view_controller = EmployeeViewController.alloc.init
+    employee_view_controller.managed_object_context = @managed_object_context
+    @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
+    @window.rootViewController = UINavigationController.alloc.initWithRootViewController(employee_view_controller)
+    @window.makeKeyAndVisible
     true
   end
 
@@ -17,7 +17,7 @@ class AppDelegate
 
     persistent_store_file_url = NSURL.fileURLWithPath(File.join(NSHomeDirectory(),
                                                                 'Documents',
-                                                                'EmployeeStore.sqlite'))
+                                                                'Employee.sqlite'))
     error_pointer = Pointer.new(:object)
 
     unless
