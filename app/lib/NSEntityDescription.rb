@@ -6,7 +6,7 @@ class NSEntityDescription
 
     attributes = attributes.each.map do |name, type, default, optional, transient, indexed|
       property = NSAttributeDescription.alloc.init
-      property.name name
+      property.name = name
       property.attributeType = type
       property.defaultValue = default if default != nil
       property.optional = optional

@@ -1,12 +1,17 @@
 class AppDelegate
   def application(application, didFinishLaunchingWithOptions:launchOptions)
     self.setting_core_data
+    # employee_view_controller = EmployeeViewController.alloc.init
+    # employee_view_controller.managed_object_context = @managed_object_context
+    # @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
+    # @window.rootViewController = UINavigationController.alloc.initWithRootViewController(employee_view_controller)
+    # @window.makeKeyAndVisible
     true
   end
 
   def setting_core_data
     managed_object_model = NSManagedObjectModel.alloc.init
-    # managed_object_model.entities = [Employee.entity]
+    managed_object_model.entities = [Employee.entity]
 
     persistent_store_coordinator = NSPersistentStoreCoordinator.alloc.initWithManagedObjectModel(managed_object_model)
 
