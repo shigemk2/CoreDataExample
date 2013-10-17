@@ -27,12 +27,12 @@ class AddEmployeeViewController < UIViewController
   end
 
   def load_form
-    @name = UITextField.alloc.initWithFrame([50,50],[200,30])
+    @name = UITextField.alloc.initWithFrame([[50,100],[200,30]])
     @name.borderStyle = UITextBorderStyleRoundedRect
     @name.placeholder = "Name"
     self.view.addSubview(@name)
 
-    @age = UITextField.alloc.initWithFrame([50,100],[200,30])
+    @age = UITextField.alloc.initWithFrame([[50,150],[200,30]])
     @age.borderStyle = UITextBorderStyleRoundedRect
     @age.placeholder = "Age"
     self.view.addSubview(@age)
