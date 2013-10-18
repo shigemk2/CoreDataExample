@@ -19,7 +19,8 @@ class AddEmployeeViewController < UIViewController
     employee.age = @age.text.intValue
 
     error_pointer = Pointer.new(:object)
-    unless @fetched_employee
+
+    unless @managed_object_context.save(error_pointer)
       raise "Error saving a new Director: #{error_pointer[0].description}"
     end
 
