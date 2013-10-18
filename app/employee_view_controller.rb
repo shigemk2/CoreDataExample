@@ -57,6 +57,27 @@ cell = UITableViewCell.alloc.initWithStyle(UITableViewCellStyleValue1,
     cell
   end
 
+  def tableView(tableView, canEditRowAtIndexPath:indexPath)
+    true
+  end
+
+  def tableView(tableView, commitEditingStyle:editingStyle, forRowAtIndexPath:indexPath)
+    employee = @fetched_employee[indexPath.row]
+    @managed_object_context.deleteObject(employee)
+
+    error_pointer = Pointer.new(:object)
+    unless
+        @managed_object_context.save(error_pointer)
+      raise "Error deleting an Employee: #{error_pointer[0].description}"
+    end
+
+    mutable_fetched_employee = @fetched_employee.mutableCopy
+    mutable_fetched_employee.delete(employee)
+
+    @fetched_employee = mutable_fetched_employee
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation:UITableViewRowAnimationFade)
+  end
+
   def add_new_employee
     add_employee_view_controller = AddEmployeeViewController.alloc.init
     add_employee_view_controller.managed_object_context = @managed_object_context
